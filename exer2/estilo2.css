@@ -36,9 +36,9 @@ section .box {
     margin: 0 10px 0 10px;
 }
 section .bola {
-    border-radius: 15px;
-    height: 60px;
-    width: 60px;
+    border-radius: 30px;
+    height: 45px;
+    width: 45px;
     border: 1px solid #000000;
     background-color: #ffffff;
     float: left;
