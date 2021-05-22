@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href=" https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <title>Exer 3</title>
+
+    <style>
+        #ap{
+            color: brown;
+        }
+    </style>
+</head>
+<body>
+    <h1>Biblioteca</h1>
+    <input type="text" id="newItem"/>
+    <input type="button" id="addItem" value="Novo Item"/>
+    <input type="button" id="clearList" value="Limpar"/>
+
+    <h2>Livros Escolhidos</h2>
+    <table id="cart"></table>
+    <tr>
+        <th></th><tr></tr>
+    </tr>
+
+    <script src="./Biblioteca_files/jquery.min.js.transferir"></script>
+
+    <script>
+     $(function(){ 
+        //cod
+        var bibliotecaArray = new Array();
+        function Livro (titulo){
+            this.titulo = titulo; 
+        }
+        $("#addItem").click(function(){
+            let tituloLivro = $("#newItem").val();
+
+            let livro = new Livro(tituloLivro);
+            bibliotecaArray.push(livro);
+
+            $("#cart")
+                .append(
+                    $("<tr>")
+                        .append(
+                            $("<td>")
+                                .text(tituloLivro)
+                            )
+                        .append(
+                            $("<td>")
+                                .append($("<p id='ap'>apagar</p>"))
+                            )
+                );
+            })
+
+            var area = window.document.getElementById("cart");
+            area.addEventListener('mouseenter', entrar);
+            function entrar() {
+                area.style.background = "#FFFF00";
+            }
+            area.addEventListener('mouseout', sair);
+            function sair() {
+                area.style.background="white";
+            }
+
+        $("#cart").on("click","p", function(){
+            $(this).parents("#cart tr").remove();
+        })
+
+        $("#clearList").click(function(){
+            $("#cart").empty();
+        })
+    });
+    </script>
+</body>
+</html>
